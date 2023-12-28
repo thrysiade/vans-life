@@ -16,6 +16,7 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overflow: hidden;
 }
 
 .site-wrapper {
@@ -29,6 +30,12 @@ header {
     display: flex;
     align-items: center;
     padding-block: 10px;
+    padding-inline: 23px;
+}
+
+header nav {
+    display: flex;
+    gap: 1rem;
 }
 
 header .site-logo {
@@ -43,7 +50,7 @@ header a {
     text-decoration: none;
     color: #4D4D4D;
     font-weight: 600;
-    padding: 5px 20px;
+    /* padding: 5px 20px; */
 }
 
 header a:hover {
