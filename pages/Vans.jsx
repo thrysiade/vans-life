@@ -19,10 +19,10 @@ export default function Vans() {
     const vans = useLoaderData();
     // console.log(vans);
     return ( 
-        <>
+        <div className="vans-list-container">
             <h2>Explore our van options</h2>
             <VansList vans={vans} />
-       </>
+       </div>
     )
 }
 

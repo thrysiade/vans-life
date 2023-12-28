@@ -13,7 +13,7 @@ export default function VansList({vans}){
                     </div>
                     <div className="vans-list-info">
                         <h4>{van.name}</h4>
-                        <span>${van.price}</span>
+                        <span>${van.price}/day</span>
                     </div>
                     <div className="vans-list-type"><p>{van.type}</p></div>
                 </Link>
