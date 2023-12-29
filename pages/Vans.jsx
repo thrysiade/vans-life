@@ -1,27 +1,29 @@
 import React from "react";
-import {useLoaderData} from 'react-router-dom';
+import {Link, useLoaderData, useSearchParams} from 'react-router-dom';
 import VansList from '../components/VansList';
-
-/**
- * Challenge: Fetch and map over the data to display it on
- * the vans page. For an extra challenge, spend time styling
- * it to look like the Figma design.
- * 
- * Hints:
- * 1. Use `fetch("/api/vans")` to kick off the request to get the
- *    data from our fake Mirage JS server
- * 2. What React hook would you use to fetch data as soon as the
- *    Vans page loads, and only fetch it the one time?
- */
 
 
 export default function Vans() {
+    const [searchParams, setSearchParams] = useSearchParams();
     const vans = useLoaderData();
-    // console.log(vans);
+
+    // filtering vans based on its type.
+    const typeFilter = searchParams.get('type');
+    const displayedVans = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans;
+
     return ( 
         <div className="vans-list-container">
             <h2>Explore our van options</h2>
-            <VansList vans={vans} />
+            <div className="van-list-filter-buttons">
+            {/* IN THE NEXT SESSION CHANGE ALL THE LINKS TO BUTTON INSTEAD AND USE 
+                setSearchParams() to change the query params.
+             */}
+                <Link to="?type=simple" className="van-type simple">Simple</Link>
+                <Link to="?type=luxury" className="van-type luxury">Luxury</Link>
+                <Link to="?type=rugged" className="van-type rugged">Rugged</Link>
+                <Link to="." className="clear-filters">Clear filters</Link>
+            </div>
+            <VansList vans={displayedVans} />
        </div>
     )
 }

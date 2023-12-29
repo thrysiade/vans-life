@@ -185,8 +185,32 @@ footer {
 
 .vans-list-container h2 {
     font-weight: 700;
-    font-size: 30px;
+    font-size: 24px;
 }
+
+.van-list-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.van-list-filter-buttons a {
+    /* text-decoration: none; */
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    /* background-color: #FFEAD0; */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: #4D4D4D;
+}
+
+.van-type {
+    text-decoration: none;
+    background-color: #FFEAD0;
+}
+
+/* .clear-filters {
+    background-color: none;
+} */
 
 .vans-list {
     padding: 0;
