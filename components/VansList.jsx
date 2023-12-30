@@ -1,13 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
-export default function VansList({vans}){
+export default function VansList({vans, typeFilter}){
+    const [searchParams, setSearchParams] = useSearchParams();
+
     return (
          <ul className="vans-list">
             {vans.map((van) => (
                 <li key={van.id}>
-                <Link to={van.id}>
+                <Link 
+                to={van.id}
+                state={{
+                    search: searchParams.toString(),
+                    type: typeFilter
+                    }}
+                >
                     <div className="vans-list-img">
                         <img src={van.imageUrl}/>
                     </div>

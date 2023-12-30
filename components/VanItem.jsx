@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const VanItem = ({van}) => {
+    const { state } = useLocation();
+
     return ( 
         <div className="van-item">
-            <Link to="/vans"><span>&larr;</span>Back to all vans</Link>
+            <Link 
+            to={state ? `..?${state.search}` : ".."}
+            relative="path"
+            >
+            <span>&larr;</span>{state.search ? `Back to all ${state.type} vans` : "Back to all vans"}</Link>
             <img src={van.imageUrl}></img>
             <p className="van-item-type">{van.type}</p>
             <h2>{van.name}</h2>

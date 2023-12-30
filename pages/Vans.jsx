@@ -40,7 +40,7 @@ export default function Vans() {
                 (<button className="clear-filters" onClick={() => handleFilterChange("type", null)}>Clear filters</button>) : null}
                 
             </div>
-            <VansList vans={displayedVans} />
+            <VansList vans={displayedVans} typeFilter={typeFilter} />
        </div>
     )
 }

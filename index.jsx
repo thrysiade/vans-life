@@ -19,6 +19,7 @@ import VanDetailsHost, { loader as vanDetailsHostLoader} from './pages/Host/VanD
 import VanDetailsHostInfo from './pages/Host/VanDetailsHostInfo';
 import VanDetailsHostPricing from './pages/Host/VanDetailsHostPricing';
 import VanDetailsHostPhoto from './pages/Host/VanDetailsHostPhoto';
+import NotFound from './pages/NotFound';
 
 function App() {
   const router = createBrowserRouter([
@@ -30,14 +31,6 @@ function App() {
         {path: 'about', element: <About />},
         {path: 'vans', element: <Vans />, loader: vansLoader},
         {path: 'vans/:id', element: <VanDetails />, loader: vanDetailsLoader},
-        // {
-        //   path: 'vans', 
-        //   element: <VanRootLayout />, 
-        //   children: [
-        //     {index: true, element: <Vans />, loader: vansLoader},
-        //     {path: ':id', element: <VanDetails />, loader: vanDetailsLoader},
-        //   ]
-        // },
         {
           path: 'host',
           element: <HostLayout />,
@@ -59,7 +52,8 @@ function App() {
             },
             
           ]
-        }
+        },
+        {path: '*', element: <NotFound />}
       ]
     }
   ]);
