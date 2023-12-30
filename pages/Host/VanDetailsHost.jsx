@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 
 const VanDetails = () => {
     const van = useLoaderData();
-    console.log(van);
+    // console.log(van);
     // console.log(van[0].name)
     const activeLink = {
         fontWeight: "bold",

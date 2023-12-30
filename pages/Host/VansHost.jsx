@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const Vans = () => {
     const vans = useLoaderData();
-    console.log(vans);
+    // console.log(vans);
 
     return (
         <section>
@@ -11,7 +11,7 @@ const Vans = () => {
             </div>
             <div className="host-vans-list">
             { vans.map((van) => (
-                <Link className="host-van-link-wrapper" to={`${van.id}`} key={van.id}>
+                <Link className="host-van-link-wrapper" to={van.id} key={van.id}>
                     <div key={van.id} className="host-van-single">
                         <img src={van.imageUrl}/>
                         <div className="host-van-info">

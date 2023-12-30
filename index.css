@@ -193,14 +193,16 @@ footer {
     flex-wrap: wrap;
 }
 
-.van-list-filter-buttons a {
+.van-list-filter-buttons button {
     /* text-decoration: none; */
     margin-right: 1rem;
     margin-bottom: 0.5rem;
     /* background-color: #FFEAD0; */
     padding: 0.5rem 1rem;
+    font-size: 16px;
     border-radius: 5px;
     color: #4D4D4D;
+    border: none;
 }
 
 .van-type {
@@ -208,9 +210,28 @@ footer {
     background-color: #FFEAD0;
 }
 
-/* .clear-filters {
-    background-color: none;
-} */
+.van-type:hover, .van-type.selected {
+    color: #FFEAD0;
+}
+
+.van-type.simple:hover, .van-type.simple.selected {
+    background-color: #E17654;
+}
+
+.van-type.luxury:hover, .van-type.luxury.selected {
+    background-color: #161616;
+}
+
+.van-type.rugged:hover, .van-type.rugged.selected {
+    background-color: #115E59;
+}
+
+
+
+.clear-filters {
+    background-color: transparent;
+    text-decoration: underline;
+}
 
 .vans-list {
     padding: 0;
@@ -256,16 +277,28 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.vans-list-type p {
-    /* border: 1px solid green; */
+.vans-list-type {
+    border: none;
     margin: 0;
     display: inline-block;
     font-size: 16px;
     color: #FFEAD0;
     padding: 0.3rem 0.8rem;
-    background-color:#E17654;
+    /* background-color:#E17654; */
     border-radius: 5px;
     text-transform: capitalize;
+}
+
+.vans-list-type.simple {
+    background-color:#E17654;
+}
+
+.vans-list-type.luxury {
+    background-color: #161616;
+}
+
+.vans-list-type.rugged {
+    background-color: #115E59;
 }
 
 /* VAN-ITEM PAGE */
