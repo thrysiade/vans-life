@@ -1,4 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { requireAuth } from "../../utils";
+import { getHostVans } from "../../api";
 
 const Vans = () => {
     const vans = useLoaderData();
@@ -29,12 +31,14 @@ const Vans = () => {
 export default Vans;
 
 export async function loader(){
-    const response = await fetch('/api/host/vans');
+    await requireAuth();
+    return getHostVans();
+    // const response = await fetch('/api/host/vans');
 
-    if(!response) {
-        console.log('failed to fetch data')
-    } else {
-        const resData = await response.json();
-        return resData.vans;
-    }
+    // if(!response) {
+    //     console.log('failed to fetch data')
+    // } else {
+    //     const resData = await response.json();
+    //     return resData.vans;
+    // }
 }

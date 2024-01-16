@@ -1,4 +1,6 @@
 import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { requireAuth } from "../../utils";
+import { getHostVans } from "../../api";
 
 const VanDetails = () => {
     const van = useLoaderData();
@@ -57,13 +59,15 @@ const VanDetails = () => {
 export default VanDetails;
 
 export async function loader({params}){
-    const id = params.id;
-    const response = await fetch('/api/host/vans/' + id);
+    await requireAuth();
+    return getHostVans(params.id)
+    // const id = params.id;
+    // const response = await fetch('/api/host/vans/' + id);
 
-    if(!response){
-        console.log('failed to fecth data!')
-    } else {
-        const resData = await response.json();
-        return resData.vans;
-    }
+    // if(!response){
+    //     console.log('failed to fecth data!')
+    // } else {
+    //     const resData = await response.json();
+    //     return resData.vans;
+    // }
 }
