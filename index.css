@@ -37,6 +37,16 @@ header nav {
     gap: 1rem;
 }
 
+header .login-icon {
+    height: 18px;
+    width: 18px;
+}
+
+header .login-link {
+    display: inline-flex;
+    align-items: center;
+}
+
 header .site-logo {
     color: black;
     margin-right: auto;
@@ -609,6 +619,15 @@ footer {
     margin-top: 22px;
     color: white;
     font-family: "Inter", sans-serif;
+}
+
+.login-form > button:disabled {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+}
+
+.red {
+    color: #cc0000;
 }
 
 

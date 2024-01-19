@@ -1,42 +1,58 @@
-import { useState } from "react";
+
+import { useLoaderData, 
+  Form, 
+  redirect, 
+  useActionData, 
+  useNavigation 
+} from "react-router-dom";
+import { loginUser } from "../api";
 
 const Login = () => {
-    const [loginFormData, setLoginFormData] = useState({email: "", password: ""});
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(loginFormData);
-    }
-    const handleChange = (e) => {
-       const { name, value } = e.target;
-       setLoginFormData((prev) => ({
-        ...prev,
-        [name]:value
-       }))
-    }
+  const message = useLoaderData();
+  const error = useActionData();
+  const navigation = useNavigation();
 
   return (
     <div className="login-container">
+      {message && <p className="red">{message}</p>}
+      {error && <p className="red">{error.message}</p> }
       <h1>Sign in to your account</h1>
-      <form onSubmit={handleSubmit} className="login-form">
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email address"
-          value={loginFormData.email}
-        />
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          placeholder="Password"
-          value={loginFormData.password}
-        />
-        <button>Log in</button>
-      </form>
+      <Form method="post" className="login-form" replace>
+        <input name="email" type="email" placeholder="Email address" />
+        <input name="password" type="password" placeholder="Password" />
+        <button 
+        disabled={navigation.state === 'submitting'}
+        >
+        {navigation.state === 'submitting' ? "Logging in.." : "Log in"}
+        </button>
+      </Form>
     </div>
   );
 };
 
 export default Login;
+
+export function loader({ request }) {
+  // const url = new URL(request.url).searchParams.get("message");
+  // return url;
+  return new URL(request.url).searchParams.get("message");
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  const pathname = new URL(request.url).searchParams.get("redirectTo") || "/host"
+  // console.log(pathname)
+
+  try{
+    const data = await loginUser({ email, password });
+    // console.log(data);
+    localStorage.setItem("loggedin", true);
+    return redirect(pathname);
+  } catch(err) {
+    return err
+  }
+
+}

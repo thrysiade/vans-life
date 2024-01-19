@@ -30,7 +30,10 @@ import VanDetailsHostPricing from "./pages/Host/VanDetailsHostPricing";
 import VanDetailsHostPhoto from "./pages/Host/VanDetailsHostPhoto";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
-import Login from "./pages/Login";
+import Login, {
+  loader as loginLoader,
+  action as loginAction,
+} from "./pages/Login";
 import { requireAuth } from "./utils";
 
 function App() {
@@ -41,7 +44,12 @@ function App() {
       children: [
         { index: true, element: <Home /> },
         { path: "about", element: <About /> },
-        { path: "login", element: <Login /> },
+        {
+          path: "login",
+          element: <Login />,
+          loader: loginLoader,
+          action: loginAction,
+        },
         {
           path: "vans",
           element: <Vans />,
@@ -60,17 +68,17 @@ function App() {
             {
               index: true,
               element: <Dashboard />,
-              loader: async () => await requireAuth()
+              loader: async ({request}) => await requireAuth(request),
             },
             {
               path: "income",
               element: <Income />,
-              loader: async () => await requireAuth()
+              loader: async ({request}) => await requireAuth(request),
             },
             {
               path: "reviews",
               element: <Reviews />,
-              loader: async () => await requireAuth()
+              loader: async ({request}) => await requireAuth(request),
             },
             {
               path: "vans",
@@ -86,17 +94,17 @@ function App() {
                 {
                   index: true,
                   element: <VanDetailsHostInfo />,
-                  loader: async () => await requireAuth()
+                  loader: async ({request}) => await requireAuth(request),
                 },
                 {
                   path: "pricing",
                   element: <VanDetailsHostPricing />,
-                  loader: async () => await requireAuth()
+                  loader: async ({request}) => await requireAuth(request),
                 },
                 {
                   path: "photos",
                   element: <VanDetailsHostPhoto />,
-                  loader: async () => await requireAuth()
+                  loader: async ({request}) => await requireAuth(request),
                 },
               ],
             },

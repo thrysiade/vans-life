@@ -30,8 +30,8 @@ const Vans = () => {
  
 export default Vans;
 
-export async function loader(){
-    await requireAuth();
+export async function loader({request}){
+    await requireAuth(request);
     return getHostVans();
     // const response = await fetch('/api/host/vans');
 

@@ -17,11 +17,11 @@ const VanDetails = () => {
             <main>
                 <div className="van-details-host-container">
                     <div className="van-details-host-info">
-                        <img src={van[0].imageUrl} alt={van[0].name} />
+                        <img src={van.imageUrl} alt={van.name} />
                         <div className="van-details-host-text">
-                            <h4>{van[0].type}</h4>
-                            <h3>{van[0].name}</h3>
-                            <p><span>${van[0].price}</span>/day</p>
+                            <h4>{van.type}</h4>
+                            <h3>{van.name}</h3>
+                            <p><span>${van.price}</span>/day</p>
                         </div>
                     </div>
                     <nav>
@@ -58,8 +58,8 @@ const VanDetails = () => {
  
 export default VanDetails;
 
-export async function loader({params}){
-    await requireAuth();
+export async function loader({request, params}){
+    await requireAuth(request);
     return getHostVans(params.id)
     // const id = params.id;
     // const response = await fetch('/api/host/vans/' + id);
