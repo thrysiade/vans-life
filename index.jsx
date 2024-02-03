@@ -18,7 +18,7 @@ import VanDetails, { loader as vanDetailsLoader } from "./pages/VanDetails";
 
 import "./server";
 import HostLayout from "./components/HostLayout";
-import Dashboard from "./pages/Host/Dashboard";
+import Dashboard, { loader as dashboardLoader } from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
 import VansHost, { loader as vanHostLoader } from "./pages/Host/VansHost";
@@ -68,7 +68,7 @@ function App() {
             {
               index: true,
               element: <Dashboard />,
-              loader: async ({request}) => await requireAuth(request),
+              loader: dashboardLoader,
             },
             {
               path: "income",
