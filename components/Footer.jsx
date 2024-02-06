@@ -1,6 +1,9 @@
 const Footer = () => {
+    const year = new Date();
+    const currentYear = year.getFullYear();
+
     return (
-        <footer>&#169; 2022 #VANLIFE</footer>
+        <footer>&#169; {`${currentYear} #VANLIFE`}</footer>
     );
 }
  
