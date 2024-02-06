@@ -1,10 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import VanItem from "../components/VanItem";
-import { getVans } from "../api";
+import { getVan, getVans } from "../api";
 
 const VanDetails = () => {
     const data = useLoaderData();
-    // console.log(data);
 
     return ( 
         <VanItem van={data} />
@@ -14,7 +13,8 @@ const VanDetails = () => {
 export default VanDetails;
 
 export async function loader({params}){
-    return getVans(params.id);
+    return getVan(params.id);
+    // return getVans(params.id);
     // const id = params.id;
     // const response = await fetch('/api/vans/' + id );
 
